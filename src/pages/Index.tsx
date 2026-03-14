@@ -154,21 +154,6 @@ const Index = () => {
               </li>
             </ul>
             
-            <div className="mt-10 pt-8 border-t border-border text-center space-y-3">
-              <Button variant="hero" className="rounded-full px-8 py-6 mb-4 text-lg font-bold shadow-soft">
-                INQUIRE NOW!
-              </Button>
-              <p className="text-foreground font-medium text-lg flex items-center justify-center gap-2">
-                📞 09097360854
-              </p>
-              <p className="text-foreground text-md flex items-center justify-center gap-2">
-                FB/IG: Yas Nails. slay all day
-              </p>
-              <p className="text-muted-foreground text-sm mt-4">
-                <strong className="text-foreground block mb-1">Pin Location:</strong>
-                Ester Sari Sari Store, Angeles II
-              </p>
-            </div>
           </div>
         </div>
       </section>
