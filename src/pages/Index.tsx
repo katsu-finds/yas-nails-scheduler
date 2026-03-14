@@ -120,6 +120,59 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Policies & Reminders */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto bg-card rounded-3xl p-8 md:p-12 shadow-card border border-border">
+            <h2 className="font-display text-3xl font-bold text-foreground mb-8 text-center text-salon-blush uppercase tracking-wider">
+              Policies & Reminders:
+            </h2>
+            <ul className="space-y-4 text-muted-foreground text-base md:text-lg">
+              <li className="flex gap-3">
+                <span className="text-salon-blush">•</span>
+                <span>Price may vary depending on your design, kindly just send your inspo.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-salon-blush">•</span>
+                <span>Services are covered with a <strong className="text-foreground font-semibold">3-4 day warranty</strong>.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-salon-blush">•</span>
+                <span>For safety purposes, clients are <strong className="text-foreground font-semibold">not allowed to bring companions</strong> during the appointment.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-salon-blush">•</span>
+                <span>Nail Extension takes <strong className="text-foreground font-semibold">min. of 3 hrs.</strong> depending on your preferred design.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-salon-blush">•</span>
+                <span>A <strong className="text-foreground font-semibold">₱200 downpayment</strong> is required. Please note that No-shows will be considered as cancellations, and the deposit will be non-refundable.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-salon-blush">•</span>
+                <span>Kindly inform us if you have any <strong className="text-foreground font-semibold">hand allergies, infections,</strong> or <strong className="text-foreground font-semibold">if you are feeling unwell</strong>.</span>
+              </li>
+            </ul>
+            
+            <div className="mt-10 pt-8 border-t border-border text-center space-y-3">
+              <Button variant="hero" className="rounded-full px-8 py-6 mb-4 text-lg font-bold shadow-soft">
+                INQUIRE NOW!
+              </Button>
+              <p className="text-foreground font-medium text-lg flex items-center justify-center gap-2">
+                📞 09097360854
+              </p>
+              <p className="text-foreground text-md flex items-center justify-center gap-2">
+                FB/IG: Yas Nails. slay all day
+              </p>
+              <p className="text-muted-foreground text-sm mt-4">
+                <strong className="text-foreground block mb-1">Pin Location:</strong>
+                Ester Sari Sari Store, Angeles II
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20">
         <div className="container mx-auto px-4">
