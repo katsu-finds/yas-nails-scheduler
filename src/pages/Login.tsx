@@ -27,6 +27,10 @@ const Login = () => {
       if (error) toast.error(error.message);
       else {
         toast.success("Welcome back!");
+        
+        // Wait a moment for the global auth state to propagate and check admin roles
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         // Check if user is admin
         const { data: roleData } = await supabase
           .from("user_roles")
