@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,6 +17,18 @@ const Login = () => {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { user, isAdmin, loading: authLoading } = useAuth();
+
+  // Watch for auth changes and redirect appropriately
+  useEffect(() => {
+    if (!authLoading && user) {
+      if (isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+    }
+  }, [user, isAdmin, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,23 +36,11 @@ const Login = () => {
     setLoading(true);
 
     if (isLogin) {
-      const { data: signInData, error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) toast.error(error.message);
       else {
         toast.success("Welcome back!");
-
-        // Check if user is admin
-        const { data: roleData } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", signInData.user!.id)
-          .eq("role", "admin")
-          .maybeSingle();
-        if (roleData) {
-          navigate("/admin");
-        } else {
-          navigate("/");
-        }
+        // The useEffect above will handle redirection once the auth context updates
       }
     } else {
       if (!name) { toast.error("Name is required"); setLoading(false); return; }
