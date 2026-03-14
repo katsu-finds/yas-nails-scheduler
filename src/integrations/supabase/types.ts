@@ -159,6 +159,27 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          booking_prompt: string
+          created_at: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          booking_prompt?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          booking_prompt?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       time_slots: {
         Row: {
           id: string

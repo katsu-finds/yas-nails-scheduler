@@ -31,8 +31,8 @@ const BookAppointment = () => {
         .eq('id', 'default')
         .single();
       
-      if (settingsData && (settingsData as any).booking_prompt) {
-        setBookingPrompt((settingsData as any).booking_prompt);
+      if (settingsData && settingsData.booking_prompt) {
+        setBookingPrompt(settingsData.booking_prompt);
       }
 
       // Fetch nail designs

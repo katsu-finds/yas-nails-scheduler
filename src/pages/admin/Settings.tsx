@@ -21,7 +21,7 @@ export default function Settings() {
         .single();
       
       if (!error && data) {
-        setPrompt((data as any).booking_prompt);
+        setPrompt(data.booking_prompt);
       }
       setLoading(false);
     };
@@ -36,10 +36,9 @@ export default function Settings() {
     }
 
     setSaving(true);
-    // @ts-ignore
     const { error } = await supabase
       .from("site_settings")
-      .update({ booking_prompt: prompt } as any)
+      .update({ booking_prompt: prompt })
       .eq("id", "default");
 
     if (error) {
