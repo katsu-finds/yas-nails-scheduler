@@ -18,6 +18,7 @@ const BookAppointment = () => {
   const [phone, setPhone] = useState("");
   const [designs, setDesigns] = useState<NailDesign[]>([]);
   const [bookingPrompt, setBookingPrompt] = useState("Follow the steps below to reserve your slot.");
+  const [closedDates, setClosedDates] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -47,6 +48,11 @@ const BookAppointment = () => {
           image: d.image_url || ""
         })) as NailDesign[]);
       }
+
+      // Fetch closed dates
+      const { data: closedData } = await supabase.from('closed_dates').select('date');
+      if (closedData) setClosedDates(closedData.map(r => r.date));
+
       setLoading(false);
     };
 
@@ -158,7 +164,14 @@ const BookAppointment = () => {
                 <input
                   type="date"
                   value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
+                  onChange={(e) => {
+                    const dateStr = e.target.value;
+                    if (closedDates.includes(dateStr)) {
+                      toast.error("Sorry, this date is not available for booking. Please choose another date.");
+                    } else {
+                      setSelectedDate(dateStr);
+                    }
+                  }}
                   min={new Date().toISOString().split("T")[0]}
                   className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
                 />
